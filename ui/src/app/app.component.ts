@@ -46,12 +46,10 @@ export class AppComponent implements OnInit {
   }
 
   checkIfWonOrLost(response: GameResponse) {
-    console.log(response)
     if(response.gameWon) {
       this.toast.success('Congratulations you won the game');
     }else if(response.gameLost) {
       this.toast.error('You lost, try a new word', '', {
-
       });
     }
   }

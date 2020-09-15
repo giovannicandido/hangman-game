@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-word-placeholder',
@@ -15,9 +15,9 @@ export class WordPlaceholderComponent implements OnInit {
 
   init(size: number) {
     this.letters = [];
-   for(let i=0; i<size;i++) {
-     this.letters[i] = '?'
-   }
+    for (let i=0; i<size;i++) {
+      this.letters[i] = '?'
+    }
   }
 
   markPosition(position: number, letter: string) {
