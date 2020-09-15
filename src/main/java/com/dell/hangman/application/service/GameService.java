@@ -27,10 +27,6 @@ public class GameService {
 
     public GameService(WordsProviderService wordsProviderService) {
         this.wordsProviderService = wordsProviderService;
-    }
-
-    @PostConstruct
-    private void postConstruct() {
         words = wordsProviderService.getWords();
     }
 
