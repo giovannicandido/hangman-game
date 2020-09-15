@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.word-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+}
+
+.word {
+  width: 40px;
+  border: 1px solid #333333;
+  cursor: pointer;
+  text-align: center;
+}

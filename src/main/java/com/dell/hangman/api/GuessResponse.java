@@ -5,7 +5,7 @@ import java.util.List;
 public class GuessResponse {
     private Character letter;
     private List<Integer> positions;
-    private int attemptRemaining = 0;
+    private int attemptsRemaining = 0;
     private boolean gameWon = false;
     private boolean gameLost = false;
 
@@ -25,12 +25,12 @@ public class GuessResponse {
         this.positions = positions;
     }
 
-    public int getAttemptRemaining() {
-        return attemptRemaining;
+    public int getAttemptsRemaining() {
+        return attemptsRemaining;
     }
 
-    public void setAttemptRemaining(int attemptRemaining) {
-        this.attemptRemaining = attemptRemaining;
+    public void setAttemptsRemaining(int attemptsRemaining) {
+        this.attemptsRemaining = attemptsRemaining;
     }
 
     public boolean isGameWon() {

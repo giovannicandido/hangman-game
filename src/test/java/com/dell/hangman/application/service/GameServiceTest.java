@@ -36,7 +36,7 @@ class GameServiceTest {
         GuessResponse response = gameService.guess('h');
 
         assertThat(response.getLetter()).isEqualTo('h');
-        assertThat(response.getAttemptRemaining()).isEqualTo(6);
+        assertThat(response.getAttemptsRemaining()).isEqualTo(6);
         assertThat(response.getPositions()).containsOnly(0);
         assertThat(response.isGameLost()).isFalse();
         assertThat(response.isGameWon()).isFalse();
@@ -54,7 +54,7 @@ class GameServiceTest {
         GuessResponse response = gameService.guess('n');
 
         assertThat(response.getLetter()).isEqualTo('n');
-        assertThat(response.getAttemptRemaining()).isEqualTo(6);
+        assertThat(response.getAttemptsRemaining()).isEqualTo(6);
         assertThat(response.getPositions()).containsOnly(5);
         assertThat(response.isGameLost()).isFalse();
         assertThat(response.isGameWon()).isTrue();
@@ -73,7 +73,7 @@ class GameServiceTest {
         GuessResponse response = gameService.guess('j');
 
         assertThat(response.getLetter()).isEqualTo('j');
-        assertThat(response.getAttemptRemaining()).isEqualTo(0);
+        assertThat(response.getAttemptsRemaining()).isEqualTo(0);
         assertThat(response.getPositions()).isEmpty();
         assertThat(response.isGameLost()).isTrue();
         assertThat(response.isGameWon()).isFalse();
@@ -122,7 +122,7 @@ class GameServiceTest {
         GuessResponse response = gameService.guess('h');
 
         assertThat(response.getPositions()).containsOnly(0);
-        assertThat(response.getAttemptRemaining()).isEqualTo(6);
+        assertThat(response.getAttemptsRemaining()).isEqualTo(6);
         assertThat(response.getLetter()).isEqualTo('h');
 
         assertThat(response.isGameWon()).isFalse();
@@ -142,7 +142,7 @@ class GameServiceTest {
         GuessResponse response = gameService.guess('a');
 
         assertThat(response.getPositions()).isEmpty();
-        assertThat(response.getAttemptRemaining()).isEqualTo(5);
+        assertThat(response.getAttemptsRemaining()).isEqualTo(5);
         assertThat(response.getLetter()).isEqualTo('a');
 
         assertThat(response.isGameWon()).isFalse();
@@ -157,7 +157,7 @@ class GameServiceTest {
         GuessResponse response = gameService.guess('H');
 
         assertThat(response.getPositions()).containsOnly(0);
-        assertThat(response.getAttemptRemaining()).isEqualTo(6);
+        assertThat(response.getAttemptsRemaining()).isEqualTo(6);
         assertThat(response.getLetter()).isEqualTo('H');
 
         assertThat(response.isGameWon()).isFalse();

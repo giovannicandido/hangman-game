@@ -67,7 +67,7 @@ public class GameService {
         GuessResponse guessResponse = new GuessResponse();
         guessResponse.setLetter(character);
         guessResponse.setPositions(positions);
-        guessResponse.setAttemptRemaining(MAX_GUESSES - numberIncorrectedGuesses);
+        guessResponse.setAttemptsRemaining(MAX_GUESSES - numberIncorrectedGuesses);
         guessResponse.setGameLost(isGameLost());
         guessResponse.setGameWon(isGameWon());
         return guessResponse;
