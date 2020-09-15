@@ -1,4 +1,4 @@
-package com.dell.hangman.application.service;
+package com.dell.hangman.domain.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -7,21 +7,23 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.dell.hangman.api.GuessResponse;
+import com.dell.hangman.domain.GuessResponse;
+import com.dell.hangman.domain.repository.WordsRepository;
+import com.dell.hangman.domain.services.GameService;
 
 class GameServiceTest {
 
 
     @Test
     void initialize() {
-        GameService gameService = new GameService(new FixedWordsProviderService());
+        GameService gameService = new GameService(new FixedWordsRepository());
         Integer characterCount = gameService.initialize();
         assertThat(characterCount).isEqualTo(6);
     }
 
     @Test
     void guessShoutInitialize() {
-        GameService gameService = new GameService(new FixedWordsProviderService());
+        GameService gameService = new GameService(new FixedWordsRepository());
         Exception exception = assertThrows(RuntimeException.class, () -> gameService.guess('h'));
 
         assertThat(exception.getMessage()).isEqualTo("Create a new game");
@@ -30,7 +32,7 @@ class GameServiceTest {
 
     @Test
     void guessShouldReturnListOfCharacter() {
-        GameService gameService = new GameService(new FixedWordsProviderService());
+        GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
 
         GuessResponse response = gameService.guess('h');
@@ -44,7 +46,7 @@ class GameServiceTest {
 
     @Test
     void gameWin() {
-        GameService gameService = new GameService(new FixedWordsProviderService());
+        GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         gameService.guess('h');
         gameService.guess('i');
@@ -62,7 +64,7 @@ class GameServiceTest {
 
     @Test
     void gameLost() {
-        GameService gameService = new GameService(new FixedWordsProviderService());
+        GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         gameService.guess('a');
         gameService.guess('b');
@@ -81,7 +83,7 @@ class GameServiceTest {
 
     @Test
     void shouldStopInGameLost() {
-        GameService gameService = new GameService(new FixedWordsProviderService());
+        GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         gameService.guess('a');
         gameService.guess('b');
@@ -97,7 +99,7 @@ class GameServiceTest {
 
     @Test
     void shouldStopInGameWon() {
-        GameService gameService = new GameService(new FixedWordsProviderService());
+        GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         gameService.guess('h');
         gameService.guess('i');
@@ -112,7 +114,7 @@ class GameServiceTest {
 
     @Test
     void shouldIgnoreRepeatedWordsForWin() {
-        GameService gameService = new GameService(new FixedWordsProviderService());
+        GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         gameService.guess('h');
         gameService.guess('h');
@@ -132,7 +134,7 @@ class GameServiceTest {
 
     @Test
     void shouldIgnoreRepeatedWordsToLost() {
-        GameService gameService = new GameService(new FixedWordsProviderService());
+        GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         gameService.guess('a');
         gameService.guess('a');
@@ -152,7 +154,7 @@ class GameServiceTest {
 
     @Test
     void shouldIgnoreCase() {
-        GameService gameService = new GameService(new FixedWordsProviderService());
+        GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         GuessResponse response = gameService.guess('H');
 
@@ -165,7 +167,7 @@ class GameServiceTest {
 
     }
 
-    class FixedWordsProviderService implements WordsProviderService {
+    class FixedWordsRepository implements WordsRepository {
 
         @Override
         public List<String> getWords() {

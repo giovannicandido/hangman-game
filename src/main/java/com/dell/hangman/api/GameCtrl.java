@@ -1,17 +1,16 @@
 package com.dell.hangman.api;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dell.hangman.application.service.GameService;
+import com.dell.hangman.api.dto.GuessInput;
+import com.dell.hangman.domain.GuessResponse;
+import com.dell.hangman.domain.services.GameService;
 
 @RestController
 @RequestMapping(path = "/${v1API}")

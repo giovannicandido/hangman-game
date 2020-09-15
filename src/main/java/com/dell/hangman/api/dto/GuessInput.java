@@ -1,4 +1,4 @@
-package com.dell.hangman.api;
+package com.dell.hangman.api.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

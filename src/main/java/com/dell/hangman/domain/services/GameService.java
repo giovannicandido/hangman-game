@@ -1,4 +1,4 @@
-package com.dell.hangman.application.service;
+package com.dell.hangman.domain.services;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -6,17 +6,16 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.stereotype.Service;
 
-import com.dell.hangman.api.GuessResponse;
+import com.dell.hangman.domain.GuessResponse;
+import com.dell.hangman.domain.repository.WordsRepository;
 
 @Service
 public class GameService {
     private static final int MAX_GUESSES = 6;
 
-    private final WordsProviderService wordsProviderService;
+    private final WordsRepository wordsRepository;
 
     private String hiddenWord;
     private int numberCorrectGuesses;
@@ -25,9 +24,9 @@ public class GameService {
 
     private List<String> words;
 
-    public GameService(WordsProviderService wordsProviderService) {
-        this.wordsProviderService = wordsProviderService;
-        words = wordsProviderService.getWords();
+    public GameService(WordsRepository wordsRepository) {
+        this.wordsRepository = wordsRepository;
+        words = wordsRepository.getWords();
     }
 
     public Integer initialize() {

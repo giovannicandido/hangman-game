@@ -1,4 +1,4 @@
-package com.dell.hangman.api;
+package com.dell.hangman.domain;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.dell.hangman.application.service;
+package com.dell.hangman.insfrastructure.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.dell.hangman.domain.repository.WordsRepository;
+
 @Service
-public class XMLWordsProviderService implements WordsProviderService {
+public class XMLFileWordsRepository implements WordsRepository {
 
     private static final String WORDS_TAG = "word";
     public static final String CANNOT_LOAD_LIST_OF_WORDS = "Cannot load list of words";
@@ -31,7 +33,7 @@ public class XMLWordsProviderService implements WordsProviderService {
         Document doc;
         try {
             doc = builder.parse(
-                    XMLWordsProviderService.class.getResourceAsStream(WORDS_XML_PATH)
+                    XMLFileWordsRepository.class.getResourceAsStream(WORDS_XML_PATH)
             );
         } catch (Exception e) {
             throw new RuntimeException(CANNOT_LOAD_LIST_OF_WORDS);
