@@ -1,0 +1,10 @@
+---
+applications:
+  - name: hangman
+    memory: 768MB
+    instances: 1
+    random-route: true
+    path: build/libs/hangman.jar
+    env:
+      SPRING_PROFILES_ACTIVE: cloud
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'

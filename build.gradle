@@ -26,3 +26,7 @@ test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
 }
+
+tasks.bootJar {
+    archiveFileName.set("hangman.jar")
+}

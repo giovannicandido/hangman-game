@@ -19,3 +19,15 @@ Run the command `gradlew check`
 
 Test reports can be read from **build/reports/tests/index.html** and coverage in
 **build/reports/jacoco/test/html/index.html**
+
+### Web deployment
+
+Application is published using pivotal cloud foundry cloud service.
+The app can be accessed in http://hangman-turbulent-baboon-gp.cfapps.io/
+
+In order to publish the application:
+
+* Download and install the cf cli
+* Login to your org `cf login`
+* enter application directory
+* run `cf push` command
