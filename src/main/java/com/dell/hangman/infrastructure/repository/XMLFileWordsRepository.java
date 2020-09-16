@@ -1,4 +1,4 @@
-package com.dell.hangman.insfrastructure.repository;
+package com.dell.hangman.infrastructure.repository;
 
 import java.util.ArrayList;
 import java.util.List;

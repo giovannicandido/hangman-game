@@ -1,4 +1,4 @@
-package com.dell.hangman.domain.repository;
+package com.dell.hangman.infrastructure.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.dell.hangman.insfrastructure.repository.XMLFileWordsRepository;
+import com.dell.hangman.infrastructure.repository.XMLFileWordsRepository;
 
 class XMLFileWordsRepositoryTest {
     @Test
