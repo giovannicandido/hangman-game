@@ -4,12 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import com.dell.hangman.infrastructure.repository.XMLFileWordsRepository;
 
 class XMLFileWordsRepositoryTest {
     @Test
+    @DisplayName("Should parse xml and return a list of words")
     void shouldParseXMLAndReturnList() {
         XMLFileWordsRepository repository = new XMLFileWordsRepository();
         List<String> words = repository.getWords();

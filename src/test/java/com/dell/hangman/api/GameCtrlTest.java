@@ -2,6 +2,7 @@ package com.dell.hangman.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import com.dell.hangman.domain.GuessResponse;
 import net.minidev.json.JSONObject;
@@ -31,6 +30,7 @@ class GameCtrlTest {
 
     @Test
     @Order(1)
+    @DisplayName("Should return the length of a random word on new game")
     void newGame() {
         Integer response = restTemplate.getForObject(getServerUrl() + "/api/new", Integer.class);
         assertThat(response).isGreaterThan(0);
@@ -38,6 +38,7 @@ class GameCtrlTest {
 
     @Test
     @Order(2)
+    @DisplayName("Should return a guess response after new game")
     void guessWord() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

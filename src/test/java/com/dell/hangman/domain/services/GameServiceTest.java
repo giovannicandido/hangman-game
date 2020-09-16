@@ -5,24 +5,25 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.dell.hangman.domain.GuessResponse;
 import com.dell.hangman.domain.repository.WordsRepository;
-import com.dell.hangman.domain.services.GameService;
 
 class GameServiceTest {
 
-
     @Test
-    void initialize() {
+    @DisplayName("Should initialize")
+    void shouldInitialize() {
         GameService gameService = new GameService(new FixedWordsRepository());
         Integer characterCount = gameService.initialize();
         assertThat(characterCount).isEqualTo(6);
     }
 
     @Test
-    void guessShoutInitialize() {
+    @DisplayName("Should ask for initialize in guess response")
+    void guessShouldAskForInitialize() {
         GameService gameService = new GameService(new FixedWordsRepository());
         Exception exception = assertThrows(RuntimeException.class, () -> gameService.guess('h'));
 
@@ -31,7 +32,8 @@ class GameServiceTest {
     }
 
     @Test
-    void guessShouldReturnListOfCharacter() {
+    @DisplayName("Should return a list of correct positions on guess")
+    void guessShouldReturnListOfCorrectPositions() {
         GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
 
@@ -45,6 +47,7 @@ class GameServiceTest {
     }
 
     @Test
+    @DisplayName("Should flag game as won")
     void gameWin() {
         GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
@@ -63,6 +66,7 @@ class GameServiceTest {
     }
 
     @Test
+    @DisplayName("Should flag game as lost")
     void gameLost() {
         GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
@@ -82,7 +86,8 @@ class GameServiceTest {
     }
 
     @Test
-    void shouldStopInGameLost() {
+    @DisplayName("Should return exception on game lost when another guess is tried")
+    void shouldReturnExceptionInGameLost() {
         GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         gameService.guess('a');
@@ -98,7 +103,8 @@ class GameServiceTest {
     }
 
     @Test
-    void shouldStopInGameWon() {
+    @DisplayName("Should return exception on game win when another guess is tried")
+    void shouldReturnExeptionInGameWon() {
         GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         gameService.guess('h');
@@ -113,7 +119,8 @@ class GameServiceTest {
     }
 
     @Test
-    void shouldIgnoreRepeatedWordsForWin() {
+    @DisplayName("Should ignore repeated word when already right")
+    void shouldIgnoreRepeatedWordsForRight() {
         GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         gameService.guess('h');
@@ -133,7 +140,8 @@ class GameServiceTest {
     }
 
     @Test
-    void shouldIgnoreRepeatedWordsToLost() {
+    @DisplayName("Should ignore repeated word when already wrong")
+    void shouldIgnoreRepeatedWordsForWrong() {
         GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
         gameService.guess('a');
@@ -153,6 +161,7 @@ class GameServiceTest {
     }
 
     @Test
+    @DisplayName("Should ignore case of letter")
     void shouldIgnoreCase() {
         GameService gameService = new GameService(new FixedWordsRepository());
         gameService.initialize();
@@ -167,7 +176,7 @@ class GameServiceTest {
 
     }
 
-    class FixedWordsRepository implements WordsRepository {
+    static class FixedWordsRepository implements WordsRepository {
 
         @Override
         public List<String> getWords() {
