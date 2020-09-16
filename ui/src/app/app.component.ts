@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
+const ATTEMPTS_REMAINING=6;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,15 +17,17 @@ export class AppComponent implements OnInit {
 
   @ViewChild(WordPlaceholderComponent)
   wordPlaceComponent: WordPlaceholderComponent
-  attemptsRemaining: number = 6;
+  attemptsRemaining: number = ATTEMPTS_REMAINING;
 
   constructor(private http: HttpClient, private toast: ToastrService) {
   }
 
   ngOnInit(): void {
+    this.init();
   }
 
   init() {
+    this.attemptsRemaining = ATTEMPTS_REMAINING
     this.http.get<number>('/api/new')
       .subscribe(r => this.wordPlaceComponent.init(r))
   }
