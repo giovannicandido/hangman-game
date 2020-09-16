@@ -9,6 +9,7 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 import com.dell.hangman.domain.GuessResponse;
+import com.dell.hangman.domain.HangmanDomainException;
 import com.dell.hangman.domain.repository.WordsRepository;
 
 @Service
@@ -40,13 +41,13 @@ public class GameService {
 
     public GuessResponse guess(Character character) {
         if(!isInitialized()) {
-            throw new RuntimeException("Create a new game");
+            throw new HangmanDomainException("Create a new game");
         }
         if(isGameWon()) {
-            throw new RuntimeException("Game won, create a new one");
+            throw new HangmanDomainException("Game won, create a new one");
         }
         if (isGameLost()) {
-            throw new RuntimeException("Game lost, create a new one");
+            throw new HangmanDomainException("Game lost, create a new one");
         }
         List<Integer> positions = verifyAssertions(character);
         if(!this.wordsAttempted.contains(character)) {
